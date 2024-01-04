@@ -1,31 +1,59 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.whatsupprototype.ui.screens.component
 
+import android.content.Context
 import android.location.Geocoder
-import androidx.compose.runtime.Composable
+import android.location.Address
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Text
+import androidx.compose.ui.Modifier
+import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
+import com.example.whatsupprototype.ui.theme.SecondaryColor
 import java.util.Locale
+import java.io.IOException
+
+fun getCityName(context: Context, lat: Double, long: Double): String {
+    val geoCoder = Geocoder(context, Locale.getDefault())
+    return try {
+        val addresses: List<Address> = geoCoder.getFromLocation(lat, long, 1) ?: return "Unknown"
+        addresses.firstOrNull()?.locality ?: addresses.firstOrNull()?.adminArea
+        ?: addresses.firstOrNull()?.subAdminArea ?: "Unknown"
+    } catch (e: IOException) {
+        "Unavailable"
+    }
+}
 
 @Composable
-fun Meteo(onCityNameReceived: (String) -> Unit) {
-    val context = LocalContext.current
+fun Meteo() {
+    Column(modifier = Modifier.padding(start = 24.dp)){
+        Ville()
+    }
+}
 
-    // Ideally, this function should be called from a ViewModel or similar.
-    // Directly calling it inside a composable is not recommended.
-    fun getCityName(lat: Double, long: Double): String {
-        var cityName: String = "votre ville"
-        val geoCoder = Geocoder(context, Locale.getDefault())
-        val address = geoCoder.getFromLocation(lat, long, 1)
-        cityName = address.firstOrNull()?.adminArea
-            ?: address.firstOrNull()?.locality
-                    ?: address.firstOrNull()?.subAdminArea
-                    ?: "Unknown"
-        return cityName
+@Composable
+fun Ville() {
+    val context = LocalContext.current
+    var cityName by remember { mutableStateOf("Loading...") }
+
+    val latitude = 40.7128
+    val longitude = -74.0060
+
+    LaunchedEffect(key1 = Unit) {
+        cityName = getCityName(context, latitude, longitude)
     }
 
-    val latitude = 40.7128 // Example latitude
-    val longitude = -74.0060 // Example longitude
-
-    val cityName = getCityName(latitude, longitude)
-    onCityNameReceived(cityName)
-
+    Row {
+        Text(
+            text = "La météo aujourd’hui à ",
+        );
+        Text(
+            text = cityName,
+            color = SecondaryColor
+        )
+    }
 }
