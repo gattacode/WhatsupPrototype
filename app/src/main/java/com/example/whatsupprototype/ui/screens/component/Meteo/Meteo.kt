@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.example.whatsupprototype.ui.screens.component
+package com.example.whatsupprototype.ui.screens.component.Meteo
 
 import android.content.Context
 import android.location.Geocoder
