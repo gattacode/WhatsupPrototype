@@ -1,4 +1,4 @@
-package com.example.whatsupprototype.ui.screens
+package com.example.whatsupprototype.ui.screens.component
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
