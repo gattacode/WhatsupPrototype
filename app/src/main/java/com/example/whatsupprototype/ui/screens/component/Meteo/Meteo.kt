@@ -22,26 +22,24 @@ fun getCityName(context: Context, lat: Double, long: Double): String {
     return try {
         val addresses: List<Address> = geoCoder.getFromLocation(lat, long, 1) ?: return "Unknown"
         addresses.firstOrNull()?.locality ?: addresses.firstOrNull()?.adminArea
-        ?: addresses.firstOrNull()?.subAdminArea ?: "Unknown"
+        ?: addresses.firstOrNull()?.subAdminArea
+        ?: "votre position" // L'api ne peut pas accéder à certaines régions (dont Lyon) dans ce cas la ville n'est pas trouvé malgré qu'on ait la position
     } catch (e: IOException) {
         "Unavailable"
     }
 }
 
 @Composable
-fun Meteo() {
-    Column(modifier = Modifier.padding(start = 24.dp)){
-        Ville()
+fun Meteo(latitude: Double, longitude: Double) {
+    Column(modifier = Modifier.padding(start = 24.dp)) {
+        Ville(latitude, longitude)
     }
 }
 
 @Composable
-fun Ville() {
+fun Ville(latitude: Double, longitude: Double) {
     val context = LocalContext.current
     var cityName by remember { mutableStateOf("Loading...") }
-
-    val latitude = 40.7128
-    val longitude = -74.0060
 
     LaunchedEffect(key1 = Unit) {
         cityName = getCityName(context, latitude, longitude)

@@ -4,8 +4,11 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import com.example.whatsupprototype.ui.theme.SecondaryColor
 
 @Composable
 fun UsernameForm(onUsernameChosen: (String) -> Unit) {
@@ -20,7 +23,9 @@ fun UsernameForm(onUsernameChosen: (String) -> Unit) {
             onValueChange = { username = it },
             label = { Text("Comment vous appelez-vous ?") }
         )
-        Button(onClick = { onUsernameChosen(username) }) {
+        Button(onClick = { onUsernameChosen(username) }, colors = ButtonDefaults.buttonColors(
+                containerColor = SecondaryColor,
+            contentColor = Color.White)) {
             Text("Envoyer")
         }
     }

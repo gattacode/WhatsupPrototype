@@ -11,11 +11,11 @@ import com.example.whatsupprototype.ui.theme.Typography
 import com.example.whatsupprototype.ui.theme.SecondaryColor
 
 @Composable
-fun HomeScreenLayout(userName: String) {
+fun HomeScreenLayout(userName: String, latitude: Double, longitude: Double) {
     Column {
         TopBar()
         GreetingMessage(userName)
-        Meteo()
+        Meteo(latitude, longitude)
     }
 }
 
