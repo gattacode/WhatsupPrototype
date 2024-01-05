@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.dp
 import com.example.whatsupprototype.utils.Ville
 
 @Composable
-fun Meteo(latitude: Double, longitude: Double) {
+fun Weather(latitude: Double, longitude: Double) {
     Column(modifier = Modifier.padding(start = 24.dp)) {
         Ville(latitude, longitude)
         WeatherForecast(latitude, longitude, "05ed99a4f4092af9d594bb01a3f73784", "fr","metric" )
@@ -30,4 +30,3 @@ fun WeatherForecast(latitude: Double, longitude: Double, apiKey: String, languag
         Text(text = "Météo: ${weatherInfo.weatherDescription}")
     }
 }
-

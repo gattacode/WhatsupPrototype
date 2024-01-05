@@ -5,7 +5,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.whatsupprototype.ui.screens.component.Weather.Meteo
+import com.example.whatsupprototype.ui.screens.component.News.NewsSection
+import com.example.whatsupprototype.ui.screens.component.Weather.Weather
 import com.example.whatsupprototype.ui.screens.component.TopBar
 import com.example.whatsupprototype.ui.theme.Typography
 import com.example.whatsupprototype.ui.theme.SecondaryColor
@@ -15,7 +16,8 @@ fun HomeScreenLayout(userName: String, latitude: Double, longitude: Double) {
     Column {
         TopBar()
         GreetingMessage(userName)
-        Meteo(latitude, longitude)
+        Weather(latitude, longitude)
+        NewsSection()
     }
 }
 
