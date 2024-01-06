@@ -57,7 +57,7 @@ fun NewsSlideMenu(apiKey: String) {
         }
     }
     Column {
-        Row {
+        Row (modifier = Modifier.padding(start = 24.dp)) {
             Text(
                 text = "Les infos ",
             );
@@ -95,7 +95,7 @@ fun NewsItem(article: NewsArticle) {
             modifier = Modifier
                 .height(200.dp)
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(10.dp)), // Coins arrondis
+                .clip(RoundedCornerShape(10.dp)),
             contentScale = ContentScale.Crop
         )
 
