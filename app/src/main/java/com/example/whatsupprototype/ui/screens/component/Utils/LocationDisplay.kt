@@ -1,4 +1,4 @@
-package com.example.whatsupprototype.ui.screens.component
+package com.example.whatsupprototype.ui.screens.component.Utils
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 

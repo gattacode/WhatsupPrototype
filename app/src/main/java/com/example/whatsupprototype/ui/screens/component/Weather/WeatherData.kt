@@ -21,8 +21,9 @@ suspend fun getWeatherData(lat: Double, lon: Double, apiKey: String, language: S
                 val weatherDescription = jsonObject.getAsJsonArray("weather").first().asJsonObject.get("description").asString
                 val temperature = jsonObject.getAsJsonObject("main").get("temp").asDouble
                 val cityName = jsonObject.get("name").asString
+                val icon = jsonObject.getAsJsonArray("weather").first().asJsonObject.get("icon").asString
 
-                WeatherInfo(cityName, temperature, weatherDescription)
+                WeatherInfo(cityName, temperature, weatherDescription, icon)
             } else {
                 WeatherInfo()
             }
@@ -35,5 +36,6 @@ suspend fun getWeatherData(lat: Double, lon: Double, apiKey: String, language: S
 data class WeatherInfo(
     val cityName: String = "Unavailable",
     val temperature: Double = 0.0,
-    val weatherDescription: String = "Unavailable"
+    val weatherDescription: String = "Unavailable",
+    val icon: String = "02d"
 )

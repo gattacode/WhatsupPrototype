@@ -20,7 +20,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.whatsupprototype.ui.screens.HomeScreen.HomeScreenLayout
 import com.example.whatsupprototype.ui.screens.component.UsernameForm
-import com.example.whatsupprototype.ui.screens.component.LocationDisplay
+import com.example.whatsupprototype.ui.screens.component.Utils.LocationDisplay
 import com.example.whatsupprototype.ui.theme.WhatsupPrototypeTheme
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback

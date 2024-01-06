@@ -16,29 +16,11 @@ import com.example.whatsupprototype.ui.theme.SecondaryColor
 import java.io.IOException
 import java.util.Locale
 
-@Composable
-fun Ville(latitude: Double, longitude: Double) {
-    val context = LocalContext.current
-    var cityName by remember { mutableStateOf("Loading...") }
 
-    LaunchedEffect(key1 = Unit) {
-        cityName = getCityName(context, latitude, longitude)
-    }
-
-    Row {
-        Text(
-            text = "La météo aujourd’hui à ",
-        );
-        Text(
-            text = cityName,
-            color = SecondaryColor
-        )
-    }
-}
 fun getCityName(context: Context, lat: Double, long: Double): String {
     val geoCoder = Geocoder(context, Locale.getDefault())
     return try {
-        val addresses: List<Address> = geoCoder.getFromLocation(lat, long, 1) ?: return "Unknown"
+        val addresses: List<Address> = geoCoder.getFromLocation(lat, long, 1) ?: return "localisation en cours..."
         addresses.firstOrNull()?.locality ?: addresses.firstOrNull()?.adminArea
         ?: addresses.firstOrNull()?.subAdminArea
         ?: "votre position" // L'api ne peut pas accéder à certaines régions (dont Lyon) dans ce cas la ville n'est pas trouvé malgré qu'on ait la position
