@@ -90,7 +90,6 @@ class MainActivity : ComponentActivity() {
                         }
                     } else {
                         HomeScreenLayout(username!!, latitudeState.value ?: 0.0, longitudeState.value ?: 0.0)
-                        LocationDisplay(latitudeState.value, longitudeState.value)
                     }
                 }
             }
