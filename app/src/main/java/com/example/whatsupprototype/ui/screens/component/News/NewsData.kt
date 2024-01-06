@@ -12,7 +12,7 @@ suspend fun getNewsData(apiKey: String): List<NewsArticle> {
     return withContext(Dispatchers.IO) {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("https://api.worldnewsapi.com/search-news?source-countries=fr&language=fr&text=tesla&api-key=$apiKey")
+            .url("https://api.worldnewsapi.com/search-news?source-countries=fr&language=fr&text=actualités&api-key=$apiKey")
             .build()
 
         client.newCall(request).execute().use { response ->

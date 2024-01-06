@@ -78,6 +78,6 @@ fun NewsItem(article: NewsArticle) {
             textDecoration = TextDecoration.Underline,
             fontSize = 16.sp
         )
-        Text(text = "Écrit par ${article.author}")
+        Text(text = article.author)
     }
 }

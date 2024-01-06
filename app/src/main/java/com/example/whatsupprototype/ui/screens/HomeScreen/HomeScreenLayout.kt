@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.whatsupprototype.ui.screens.component.News.NewsSection
+import com.example.whatsupprototype.ui.screens.component.Todo.Todo
 import com.example.whatsupprototype.ui.screens.component.Weather.Weather
 import com.example.whatsupprototype.ui.screens.component.TopBar
 import com.example.whatsupprototype.ui.theme.Typography
@@ -18,6 +19,7 @@ fun HomeScreenLayout(userName: String, latitude: Double, longitude: Double) {
         GreetingMessage(userName)
         Weather(latitude, longitude)
         NewsSection()
+        Todo()
     }
 }
 
