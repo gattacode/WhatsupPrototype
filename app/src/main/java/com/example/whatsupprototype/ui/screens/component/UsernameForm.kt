@@ -30,8 +30,7 @@ fun UsernameForm(onUsernameChosen: (String) -> Unit) {
             modifier = Modifier
                 .weight(1f)
                 .clip(RoundedCornerShape(10.dp))
-                .padding(horizontal = 8.dp, vertical = 4.dp)
-                .fillMaxWidth(),
+                .padding(horizontal = 8.dp, vertical = 4.dp),
             label = { Text("Comment vous appelez-vous ?") }
         )
         Button(
